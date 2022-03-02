@@ -1,0 +1,193 @@
+.sign {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-image: url("./background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@keyframes sign-content-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sign-left {
+  position: relative;
+  flex: 0.3;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.wave {
+  position: absolute;
+  width: 40px;
+  height: 100vh;
+  overflow: hidden;
+  background: url("./wave_vertical.png");
+  background-size: contain;
+  background-repeat: round;
+}
+.wave.wave1 {
+  animation: animate 20s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+}
+.wave.wave2 {
+  animation: animate2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -4s;
+}
+.wave.wave3 {
+  animation: animate 10s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -3s;
+}
+.wave.wave4 {
+  animation: animate 10s linear infinite;
+  z-index: 996;
+  opacity: 0.8;
+  animation-delay: -2s;
+}
+
+@keyframes animate {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: 100vh;
+  }
+}
+@keyframes animate2 {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: -100vh;
+  }
+}
+
+@keyframes animate-horizontal {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 100vw;
+  }
+}
+@keyframes animate2-horizontal {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -100vw;
+  }
+}
+
+.sign-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0.7;
+}
+.sign-right-content {
+  animation-name: sign-content-animation;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation-duration: 0.8s;
+}
+
+.sign-logo {
+  display: inline-block;
+  color: white;
+  cursor: pointer;
+  font-size: 3rem;
+  margin-bottom: 24px;
+  transition: all 0.3s;
+}
+.sign-logo::after {
+  display: block;
+  content: "";
+  bottom: 0px;
+  height: 2px;
+  width: 0%;
+  margin: 0px auto;
+  background: white;
+  transition: width 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.sign-right:hover .sign-logo::after {
+  width: 100%;
+}
+
+.waves {
+  position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+  .sign {
+    flex-direction: column-reverse;
+  }
+  .sign-left {
+    flex: 0.75;
+  }
+  .sign-right {
+    flex: 0.25;
+  }
+  .waves {
+    bottom: 40px;
+  }
+  .wave {
+    width: 100vw;
+    height: 40px;
+    background: url("./wave_horizontal.png");
+    background-size: contain;
+  }
+  .wave.wave1 {
+    animation: animate-horizontal 20s linear infinite;
+  }
+  .wave.wave2 {
+    animation: animate2-horizontal 15s linear infinite;
+  }
+  .wave.wave3 {
+    animation: animate-horizontal 10s linear infinite;
+  }
+  .wave.wave4 {
+    animation: animate-horizontal 10s linear infinite;
+  }
+  .sign-logo {
+    font-size: 2rem;
+    padding: 0;
+  }
+  .sign-right-content > ul {
+    display: none;
+  }
+}
+
+.sign-right-content > ul {
+  list-style-type: decimal;
+}
+.sign-right-content > ul li {
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  transition: font-size 0.4s;
+}
+.sign-description {
+  width: 50%;
+}
+
+.sign-description li:hover {
+  font-size: 1.55rem;
+}
